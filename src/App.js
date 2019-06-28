@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import firebase from 'firebase';
-import { Header, Button, Spinner, CardSection, Card } from './components/common';
+import { Header, Spinner, CardSection } from './components/common';
 import LoginForm from './components/LoginForm';
 import Welcome from './components/Welcome';
 
@@ -31,18 +31,10 @@ class App extends Component {
     renderContent() {
         switch (this.state.loggedIn) {
             case true:
-                return ( 
-                 <Card>
-                        <View style={styles.containerWelcomeStyle}>
-                            <Welcome />
-                        </View>
-                        <View style={styles.containerWelcomeStyle}>
-                            <Button onPress={() => firebase.auth().signOut()}>
-                                LOG OUT
-                            </Button>
-                        </View>
-                    </Card>
-                );
+                return (
+                <Welcome
+                    title="Welcome to App!"
+                />);
             case false:
                 return <LoginForm />;
             default:
@@ -54,7 +46,6 @@ class App extends Component {
         }
     }
 
-
 render() {
     return (
         <View>
@@ -64,17 +55,5 @@ render() {
     );
 }
 }
-
-const styles = {
-    containerWelcomeStyle: {
-        borderBottomWidth: 1,
-        padding: 5,
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        flexDirection: 'row',
-        borderColor: '#ddd',
-        position: 'relative'
-        }
-};
 
 export default App;

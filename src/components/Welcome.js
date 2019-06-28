@@ -1,25 +1,29 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import firebase from 'firebase';
+import { Text } from 'react-native';
+import { Card, Button, CardSection } from './common';
 
-const Welcome = () => {
-    const { containerStyle, textStyle } = styles;
+const Welcome = ({ title }) => {
+    const { textStyle } = styles;
     return (
-            <View style={containerStyle}>
-                <Text style={textStyle}>
-                    Welcome to Culiacán :D
-                </Text>
-            </View>
+        <Card>
+            <CardSection>
+                <Text style={textStyle}> {title} </Text>
+            </CardSection>
+            <CardSection>
+                <Button onPress={() => firebase.auth().signOut()}>
+                    LOG OUT
+                </Button>
+            </CardSection>
+    </Card>
     );
 };
 
 const styles = {
-    containerStyle: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
     textStyle: {
-        fontSize: 20
+        flex: 1,
+        fontSize: 20,
+        textAlign: 'center'
     }
 };
 
