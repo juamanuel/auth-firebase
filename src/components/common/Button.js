@@ -8,7 +8,7 @@ const Button = ({ children, onPress }) => {
             <Text style={textStyle}>{children}</Text>
         </TouchableOpacity>
     );
-}
+};
 
 const styles = {
     textStyle: {
@@ -31,4 +31,4 @@ const styles = {
     }
 };
 
-export  { Button };
+export { Button };
